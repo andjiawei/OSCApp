@@ -1,0 +1,25 @@
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/toolbar"
+    android:background="@color/main_green"
+    style="@style/ToolBarStyle">
+
+    <TextView
+        android:id="@id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/app_name"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:id="@+id/iv_toolbar_search"
+        android:src="@drawable/toolbar_search_icon"
+        android:layout_gravity="center|right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</android.support.v7.widget.Toolbar>

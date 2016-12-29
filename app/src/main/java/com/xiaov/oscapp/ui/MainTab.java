@@ -7,6 +7,9 @@ import com.xiaov.oscapp.viewpagerfragment.GeneralViewPagerFragment;
 import com.xiaov.oscapp.viewpagerfragment.MyInformationFragment;
 import com.xiaov.oscapp.viewpagerfragment.TweetsViewPagerFragment;
 
+/**
+ * 更换tab图片文字在此类
+ */
 public enum MainTab {
 
 	/*

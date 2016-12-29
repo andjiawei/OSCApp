@@ -1,83 +1,60 @@
 package com.xiaov.oscapp.base;
 
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.xiaov.oscapp.R;
+import com.xiaov.oscapp.adapter.ViewPageFragmentAdapter;
+import com.xiaov.oscapp.adapter.ViewPageInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 描述:带有导航条的基类
  * 作者：zhangjiawei
  * 时间：2016/12/27
  */
-public class BaseViewPagerFragment extends Fragment {
+public abstract class BaseViewPagerFragment extends Fragment {
 
     public final String TAG=getClass().getName();
+    public List<ViewPageInfo> mTabs=new ArrayList<>();
 
-    private View mRoot;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.e(TAG, "++++-------------++++++onAttach: " );
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.e(TAG, "++++-------------++++++onCreate: " );
-
-    }
+    public View mRoot;
+    public TabLayout mTabLayout;
+    public ViewPageFragmentAdapter mTabsAdapter;
+    public ViewPager mViewpager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e(TAG, "++++-------------++++++onCreateView: mRoot:"+mRoot );
         if (mRoot == null) {//避免重复加载
+
             View root = inflater.inflate(R.layout.base_viewpage_fragment, null);
-            TextView textView= (TextView) root.findViewById(R.id.test);
-            textView.setText(getClass().getName());
+            mTabLayout = (TabLayout) root.findViewById(R.id.base_vp_fragment_tabLayout);
+            mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+            mViewpager = (ViewPager) root.findViewById(R.id.base_vp_fragment_viewpager);
+//          mErrorLayout = (EmptyLayout) root.findViewById(R.id.error_layout);
+
+            mTabsAdapter = new ViewPageFragmentAdapter(getChildFragmentManager(),mTabs,mTabLayout.getContext());
+            setScreenPageLimit();
+            onSetupTabAdapter(mTabsAdapter);
+            mViewpager.setAdapter(mTabsAdapter);
+            mTabLayout.setupWithViewPager(mViewpager);
             mRoot = root;
         }
         return mRoot;
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Log.e(TAG, "++++-------------++++++onViewCreated: " );
-    }
+    protected abstract void onSetupTabAdapter(ViewPageFragmentAdapter mTabsAdapter);
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.e(TAG, "++++-------------++++++onActivityCreated: " );
-    }
+    protected abstract void setScreenPageLimit();
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.e(TAG, "++++-------------++++++onDestroy: " );
-    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.e(TAG, "++++-------------++++++onDestroyView: " );
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.e(TAG, "++++-------------++++++onDetach: " );
-
-    }
 }

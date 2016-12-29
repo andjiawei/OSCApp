@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,24 +14,18 @@
         app:allowWidthFull="true"
         app:slidingBlock="?attr/sliding_block_bg" >
     </net.oschina.app.widget.PagerSlidingTabStrip>-->
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="testtesttesttesttest"
-        />
-
-    <View
-        android:id="@+id/view_pager_line"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/base_vp_fragment_tabLayout"
+        style="@style/TabLayoutStyle"
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        />
+        android:layout_height="wrap_content"/>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_height="match_parent"
+        android:id="@+id/base_vp_fragment_viewpager"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_below="@id/view_pager_line">
+        >
     </android.support.v4.view.ViewPager>
 
     <!--对应这个layout  view_error_layout.xml-->
@@ -40,4 +34,4 @@
         style="@style/fill_fill"
         android:visibility="gone" />-->
 
-</RelativeLayout>
+</LinearLayout>
