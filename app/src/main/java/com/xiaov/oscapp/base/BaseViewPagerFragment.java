@@ -1,6 +1,7 @@
 package com.xiaov.oscapp.base;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,13 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.xiaov.oscapp.R;
 import com.xiaov.oscapp.adapter.ViewPageFragmentAdapter;
 import com.xiaov.oscapp.adapter.ViewPageInfo;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +50,7 @@ public abstract class BaseViewPagerFragment extends Fragment {
             onSetupTabAdapter(mTabsAdapter);
             mViewpager.setAdapter(mTabsAdapter);
             mTabLayout.setupWithViewPager(mViewpager);
+            setUpIndicatorWidth();
             mRoot = root;
         }
         return mRoot;
@@ -56,5 +60,37 @@ public abstract class BaseViewPagerFragment extends Fragment {
 
     protected abstract void setScreenPageLimit();
 
+    /**
+     * 通过反射修改TabLayout Indicator的宽度（仅在Android 4.2及以上生效）
+     */
+    private void setUpIndicatorWidth() {
+        Class<?> tabLayoutClass = mTabLayout.getClass();
+        Field tabStrip = null;
+        try {
+            tabStrip = tabLayoutClass.getDeclaredField("mTabStrip");
+            tabStrip.setAccessible(true);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
 
+        LinearLayout layout = null;
+        try {
+            if (tabStrip != null) {
+                layout = (LinearLayout) tabStrip.get(mTabLayout);
+            }
+            for (int i = 0; i < layout.getChildCount(); i++) {
+                View child = layout.getChildAt(i);
+                child.setPadding(0, 0, 0, 0);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    params.setMarginStart(50);
+                    params.setMarginEnd(50);
+                }
+                child.setLayoutParams(params);
+                child.invalidate();
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
 }

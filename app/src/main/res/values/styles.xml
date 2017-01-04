@@ -15,7 +15,7 @@
         <item name="tabIndicatorHeight">2dp</item>//滑块的高度
         <item name="tabPaddingStart">0dp</item>//每一个padding的距离开始位置的padding
         <item name="tabPaddingEnd">0dp</item>
-        <item name="tabBackground">@color/white_text</item>//背景色
+        <item name="tabBackground">@color/white</item>//背景色
         <item name="tabTextAppearance">@style/TabTextAppearance</item>
         <item name="tabSelectedTextColor">@color/main_green</item>
     </style>
