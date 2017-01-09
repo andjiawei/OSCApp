@@ -40,6 +40,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         toolBar.setTitle("");
         mToolBarTitle = (TextView) findViewById(R.id.toolbar_title);
 
+        findViewById(R.id.quick_option_iv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                QuickOptionDialogFragment quickOptionDialogFragment=new QuickOptionDialogFragment();
+                quickOptionDialogFragment.show(getSupportFragmentManager(),"QuickOptionDialogFragment");
+            }
+        });
+
         findViewById(R.id.toolbar_title);
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 
@@ -68,13 +76,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             }
             title.setText(getString(mainTab.getResName()));
             tab.setIndicator(indicator);//给每个tab设置contentView
-            tab.setContent(new TabHost.TabContentFactory() {
-
-                @Override
-                public View createTabContent(String tag) {
-                    return new View(MainActivity.this);
-                }
-            });
+//            tab.setContent(new TabHost.TabContentFactory() {
+//
+//                @Override
+//                public View createTabContent(String tag) {
+//                    return new View(MainActivity.this);
+//                }
+//            });
             mTabHost.addTab(tab, mainTab.getClz(), null);//绑定tag和fragment
 
             if (mainTab.equals(MainTab.ME)) {
@@ -98,6 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     public void onTabChanged(String tabId) {
         //tabId 是 newTabSpec（）设置的参数
-        mToolBarTitle.setText(tabId);
+        mToolBarTitle.setText(tabId);//toolbar上文字
     }
 }
