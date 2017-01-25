@@ -19,14 +19,12 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.support.design.widget.TabLayout.GRAVITY_CENTER;
-
 /**
  * 描述:带有导航条的基类
  * 作者：zhangjiawei
  * 时间：2016/12/27
  */
-public abstract class BaseViewPagerFragment extends Fragment {
+public abstract class BaseViewPagerFragment extends BaseFragment {
 
     public final String TAG=getClass().getName();
     public List<ViewPageInfo> mTabs=new ArrayList<>();
@@ -43,7 +41,6 @@ public abstract class BaseViewPagerFragment extends Fragment {
 
             View root = inflater.inflate(R.layout.base_viewpage_fragment, null);
             mTabLayout = (TabLayout) root.findViewById(R.id.base_vp_fragment_tabLayout);
-            mTabLayout.setTabGravity(GRAVITY_CENTER);
             mTabLayout.setTabMode(TabLayout.MODE_FIXED);
             mViewpager = (ViewPager) root.findViewById(R.id.base_vp_fragment_viewpager);
 //          mErrorLayout = (EmptyLayout) root.findViewById(R.id.error_layout);
@@ -53,7 +50,7 @@ public abstract class BaseViewPagerFragment extends Fragment {
             onSetupTabAdapter(mTabsAdapter);
             mViewpager.setAdapter(mTabsAdapter);
             mTabLayout.setupWithViewPager(mViewpager);
-            setUpIndicatorWidth();
+//            setUpIndicatorWidth();
             mRoot = root;
         }
         return mRoot;

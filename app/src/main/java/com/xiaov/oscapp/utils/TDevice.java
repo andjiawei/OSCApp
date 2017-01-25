@@ -220,12 +220,12 @@ public class TDevice {
 
     public static boolean hasInternet() {
         boolean flag;
-        if (((ConnectivityManager) BaseApplication.context().getSystemService(
-                "connectivity")).getActiveNetworkInfo() != null)
-            flag = true;
-        else
-            flag = false;
-        return flag;
+//        if (((ConnectivityManager) BaseApplication.context().getSystemService(
+//                "connectivity")).getActiveNetworkInfo() != null)
+//            flag = true;
+//        else
+//            flag = false;
+        return true;
     }
 
     public static boolean gotoGoogleMarket(Activity activity, String pck) {

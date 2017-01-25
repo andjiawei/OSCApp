@@ -2,7 +2,11 @@ package com.xiaov.oscapp;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.util.Log;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.PersistentCookieStore;
+import com.xiaov.oscapp.api.ApiHttpClient;
 import com.xiaov.oscapp.base.BaseApplication;
 import com.xiaov.oscapp.bean.User;
 import com.xiaov.oscapp.cache.DataCleanManager;
@@ -47,18 +51,14 @@ public class AppContext extends BaseApplication {
     }
 
     private void init() {
-        // 初始化网络请求
-//        AsyncHttpClient client = new AsyncHttpClient();
-//        PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
-//        client.setCookieStore(myCookieStore);
-//        ApiHttpClient.setHttpClient(client);
-//        ApiHttpClient.setCookie(ApiHttpClient.getCookie(this));
+//         初始化网络请求
+        AsyncHttpClient client = new AsyncHttpClient();
+        PersistentCookieStore myCookieStore = new PersistentCookieStore(this);
+        client.setCookieStore(myCookieStore);
+        ApiHttpClient.setHttpClient(client);
+        ApiHttpClient.setCookie(ApiHttpClient.getCookie(this));
 
-//        // Log控制器
-//        KJLoger.openDebutLog(BuildConfig.DEBUG);
-//        TLog.DEBUG = BuildConfig.DEBUG;
-
-        // Bitmap缓存地址
+//         Bitmap缓存地址
 //        HttpConfig.CACHEPATH = "OSChina/imagecache";
     }
 

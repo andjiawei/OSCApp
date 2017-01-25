@@ -10,6 +10,11 @@
     <color name="white40">#40FFFFFF</color>
     <color name="main_gray">#9A9A9A</color>
 
+    <!-- 下拉刷新时，颜色值 -->
+    <color name="swiperefresh_color1">#ff00ddff</color>
+    <color name="swiperefresh_color2">#ffffbb33</color>
+    <color name="swiperefresh_color3">#ffff4444</color>
+    <color name="swiperefresh_color4">#ffaa66cc</color>
 
 
 </resources>

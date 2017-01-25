@@ -1,10 +1,14 @@
 package com.xiaov.oscapp.bean;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import java.io.Serializable;
 
 /**
  * 通知信息实体类
  */
+@SuppressWarnings("serial")
+@XStreamAlias("notice")
 public class Notice implements Serializable {
 
     public final static String UTF8 = "UTF-8";
@@ -16,45 +20,51 @@ public class Notice implements Serializable {
     public final static int TYPE_NEWFAN = 4;
     public final static int TYPE_NEWLIKE = 5;
 
+    @XStreamAlias("atmeCount")
     private int atmeCount;
 
+    @XStreamAlias("msgCount")
     private int msgCount;
 
+    @XStreamAlias("reviewCount")
     private int reviewCount;
 
+    @XStreamAlias("newFansCount")
     private int newFansCount;
+
+    @XStreamAlias("newLikeCount")
     private int newLikeCount;
 
     public int getAtmeCount() {
-	return atmeCount;
+        return atmeCount;
     }
 
     public void setAtmeCount(int atmeCount) {
-	this.atmeCount = atmeCount;
+        this.atmeCount = atmeCount;
     }
 
     public int getMsgCount() {
-	return msgCount;
+        return msgCount;
     }
 
     public void setMsgCount(int msgCount) {
-	this.msgCount = msgCount;
+        this.msgCount = msgCount;
     }
 
     public int getReviewCount() {
-	return reviewCount;
+        return reviewCount;
     }
 
     public void setReviewCount(int reviewCount) {
-	this.reviewCount = reviewCount;
+        this.reviewCount = reviewCount;
     }
 
     public int getNewFansCount() {
-	return newFansCount;
+        return newFansCount;
     }
 
     public void setNewFansCount(int newFansCount) {
-	this.newFansCount = newFansCount;
+        this.newFansCount = newFansCount;
     }
 
     public int getNewLikeCount() {

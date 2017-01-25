@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xiaov.oscapp.R;
+import com.xiaov.oscapp.utils.StringUtils;
 
 /**
  * 描述:
@@ -43,6 +44,10 @@ public class BaseApplication extends Application {
 
     public static Resources resources() {
         return _resource;
+    }
+
+    public static String getLastRefreshTime(String key) {
+        return getPreferences(LAST_REFRESH_TIME).getString(key, StringUtils.getCurTimeStr());
     }
 
     //放入已读文章列表中
