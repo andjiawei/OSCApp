@@ -2,8 +2,8 @@ package com.xiaov.oscapp;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
+import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.PersistentCookieStore;
 import com.xiaov.oscapp.api.ApiHttpClient;
@@ -285,4 +285,10 @@ public class AppContext extends BaseApplication {
         set(KEY_FRITST_START, frist);
     }
 
+    public static Gson createGson() {
+        com.google.gson.GsonBuilder gsonBuilder = new com.google.gson.GsonBuilder();
+        //gsonBuilder.setExclusionStrategies(new SpecificClassExclusionStrategy(null, Model.class));
+        gsonBuilder.setDateFormat("yyyy-MM-dd HH:mm:ss");
+        return gsonBuilder.create();
+    }
 }

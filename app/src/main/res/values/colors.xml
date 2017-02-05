@@ -15,6 +15,11 @@
     <color name="swiperefresh_color2">#ffffbb33</color>
     <color name="swiperefresh_color3">#ffff4444</color>
     <color name="swiperefresh_color4">#ffaa66cc</color>
+    <color name="list_divider_color">#DADADA</color>
 
-
+    <color name="ques_bt_bg">#f6f6f6</color>
+    <color name="ques_bt_text_color_light">#24cf5f</color>
+    <color name="ques_bt_text_color_dark">#6a6a6a</color>
+    <color name="blog_title_text_color_light">#111111</color>
+    <color name="count_text_color_light">#9d9d9d</color>
 </resources>

@@ -10,8 +10,13 @@ import android.widget.TextView;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.xiaov.oscapp.AppContext;
 import com.xiaov.oscapp.R;
+import com.xiaov.oscapp.adapter.base.BaseListAdapter;
+import com.xiaov.oscapp.bean.base.PageBean;
+import com.xiaov.oscapp.bean.base.ResultBean;
 import com.xiaov.oscapp.cache.CacheManager;
 import com.xiaov.oscapp.ui.empty.EmptyLayout;
+import com.xiaov.oscapp.widget.SuperRefreshLayout;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;

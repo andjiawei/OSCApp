@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
+import com.xiaov.oscapp.utils.ImageLoader;
 
 import java.io.Serializable;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 

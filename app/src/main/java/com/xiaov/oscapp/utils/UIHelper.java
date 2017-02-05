@@ -21,6 +21,7 @@ import android.webkit.JavascriptInterface;
 
 import com.xiaov.oscapp.AppContext;
 import com.xiaov.oscapp.base.Comment;
+import com.xiaov.oscapp.bean.Banner;
 import com.xiaov.oscapp.bean.Constants;
 import com.xiaov.oscapp.bean.Notice;
 
@@ -280,32 +281,32 @@ public class UIHelper {
 //        }
 //    }
 
-//    public static void showBannerDetail(Context context, Banner banner) {
-//        long newsId = banner.getId();
-//        switch (banner.getType()) {
-//            case Banner.BANNER_TYPE_URL:
+    public static void showBannerDetail(Context context, Banner banner) {
+        long newsId = banner.getId();
+        switch (banner.getType()) {
+            case Banner.BANNER_TYPE_URL:
 //                showNewsDetail(context, Integer.parseInt(String.valueOf(newsId)), 0);
-//                break;
-//            case Banner.BANNER_TYPE_SOFTWARE:
+                break;
+            case Banner.BANNER_TYPE_SOFTWARE:
 //                showSoftwareDetailById(context, Integer.parseInt(String.valueOf(newsId)));
-//                break;
-//            case Banner.BANNER_TYPE_POST:
+                break;
+            case Banner.BANNER_TYPE_POST:
 //                showPostDetail(context, StringUtils.toInt(String.valueOf(newsId)),
 //                        0);
-//                break;
-//            case Banner.BANNER_TYPE_BLOG:
+                break;
+            case Banner.BANNER_TYPE_BLOG:
 //                showBlogDetail(context, StringUtils.toLong(String.valueOf(newsId)));
-//                break;
-//            case Banner.BANNER_TYPE_EVENT:
+                break;
+            case Banner.BANNER_TYPE_EVENT:
 //                showEventDetail(context,
 //                        StringUtils.toInt(newsId));
-//                break;
-//            case Banner.BANNER_TYPE_NEWS:
-//            default:
-//                showUrlRedirect(context, banner.getHref());
-//                break;
-//        }
-//    }
+                break;
+            case Banner.BANNER_TYPE_NEWS:
+            default:
+                showUrlRedirect(context, banner.getHref());
+                break;
+        }
+    }
 
     /**
      * 动态点击跳转到相关新闻、帖子等
@@ -443,15 +444,15 @@ public class UIHelper {
      * @param context
      * @param url
      */
-//    public static void showUrlRedirect(Context context, String url) {
-//        if (url == null)
-//            return;
+    public static void showUrlRedirect(Context context, String url) {
+        if (url == null)
+            return;
 //        if (url.contains("city.oschina.net/")) {
 //            int id = StringUtils.toInt(url.substring(url.lastIndexOf('/') + 1));
 //            UIHelper.showEventDetail(context, id);
 //            return;
 //        }
-//
+
 //        if (url.startsWith(SHOWIMAGE)) {
 //            String realUrl = url.substring(SHOWIMAGE.length());
 //            try {
@@ -464,21 +465,21 @@ public class UIHelper {
 //            }
 //            return;
 //        }
-//        URLsUtils urls = URLsUtils.parseURL(url);
-//        if (urls != null) {
-//            showLinkRedirect(context, urls.getObjType(), urls.getObjId(),
-//                    urls.getObjKey());
-//        } else {
+        URLsUtils urls = URLsUtils.parseURL(url);
+        if (urls != null) {
+            showLinkRedirect(context, urls.getObjType(), urls.getObjId(),
+                    urls.getObjKey());
+        } else {
 //            openBrowser(context, url);
-//        }
-//    }
+        }
+    }
 
-//    public static void showLinkRedirect(Context context, int objType,
-//                                        int objId, String objKey) {
-//        switch (objType) {
-//            case URLsUtils.URL_OBJ_TYPE_NEWS:
+    public static void showLinkRedirect(Context context, int objType,
+                                        int objId, String objKey) {
+        switch (objType) {
+            case URLsUtils.URL_OBJ_TYPE_NEWS:
 //                showNewsDetail(context, objId, -1);
-//                break;
+                break;
 //            case URLsUtils.URL_OBJ_TYPE_QUESTION:
 //                showPostDetail(context, objId, 0);
 //                break;
@@ -506,8 +507,8 @@ public class UIHelper {
 //            case URLsUtils.URL_OBJ_TYPE_GIT:
 //                openSysBrowser(context, objKey);
 //                break;
-//        }
-//    }
+        }
+    }
 
     /**
      * 打开内置浏览器

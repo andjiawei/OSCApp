@@ -12,8 +12,8 @@ import com.xiaov.oscapp.bean.BlogList;
 import com.xiaov.oscapp.bean.NewsList;
 import com.xiaov.oscapp.fragment.BlogFragment;
 import com.xiaov.oscapp.fragment.EventFragment;
-import com.xiaov.oscapp.fragment.NewsFragment;
 import com.xiaov.oscapp.fragment.QuestionFragment;
+import com.xiaov.oscapp.fragment.general.NewsFragment;
 
 /**
  * 描述: 综合 news
